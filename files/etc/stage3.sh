@@ -53,10 +53,8 @@ log_say "Downloading startup.tar.gz"
 wget -q -O /tmp/startup.tar.gz https://github.com/PrivateRouter-LLC/script-repo/raw/main/startup-scripts/startup.tar.gz
 log_say "Extracting startup.tar.gz"
 tar -xzf /tmp/startup.tar.gz -C /etc
-log_say "Fix permissions and flags"
-chown root: /etc/init.d/custom /etc/rc.custom 
-chmod 755 /etc/init.d/custom /etc/rc.custom
 log_say "Enabling our rc.custom startup script"
+/etc/init.d/custom disable
 /etc/init.d/custom enable
 log_say "Running our rc.custom startup script"
 bash /etc/rc.custom
