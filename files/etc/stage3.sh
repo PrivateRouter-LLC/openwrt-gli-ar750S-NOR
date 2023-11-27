@@ -44,6 +44,16 @@ while ! is_connected; do
 done
 log_say "Internet connection established"
 
+opkg update
+## INSTALL MESH PROFILE ##
+log_say "Installing Mesh Packages..."
+opkg install tgrouterappstore luci-app-shortcutmenu luci-app-poweroff luci-app-wizard
+opkg remove wpad-mbedtls wpad-basic-mbedtls wpad-basic wpad-basic-openssl wpad-basic-wolfssl wpad-wolfssl
+opkg install wpad-mesh-openssl kmod-batman-adv batctl avahi-autoipd batctl-full luci-app-dawn git jq
+opkg install luci-app-easymesh luci-mod-dashboard tgwireguard tgopenvpn luci-app-poweroff luci-lib-ipkg lua luci
+opkg install luci-proto-batman-adv luci-theme-argon luci-app-argon-config tgrouterappstore libiwinfo-lua libubus-lua
+opkg install base-files busybox cgi-io dropbear firewall
+
 # Cleanup our auto-provision and prepare for first real boot
 [ -d /etc/auto-provision ] && rm -rf /etc/auto-provision
 [ -f /etc/rc.local ] && echo "# Empty by design" > /etc/rc.local
