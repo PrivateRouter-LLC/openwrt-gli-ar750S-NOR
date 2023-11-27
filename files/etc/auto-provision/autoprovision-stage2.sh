@@ -64,6 +64,16 @@ installPackages()
    log_say " █████   █████░░██████  ░░████████  ░░█████ ░░██████  █████           "
    log_say "░░░░░   ░░░░░  ░░░░░░    ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░            "
 
+     opkg update
+      ## INSTALL MESH PROFILE ##
+    log_say "Installing Mesh Packages..."
+    opkg install tgrouterappstore luci-app-shortcutmenu luci-app-poweroff luci-app-wizard
+    opkg remove wpad-mbedtls wpad-basic-mbedtls wpad-basic wpad-basic-openssl wpad-basic-wolfssl wpad-wolfssl
+    opkg install wpad-mesh-openssl kmod-batman-adv batctl avahi-autoipd mesh11sd batctl-full luci-app-dawn git jq
+    opkg install luci-app-easymesh luci-mod-dashboard tgwireguard tgopenvpn luci-app-poweroff luci-lib-ipkg lua luci
+    opkg install luci-proto-batman-adv luci-theme-argon luci-app-argon-config tgrouterappstore libiwinfo-lua libubus-lua
+    opkg install base-files busybox cgi-io dropbear firewall
+
    opkg update
    #Go Go Packages
    opkg install base-files busybox ca-bundle cgi-io dnsmasq dropbear firewall fstools fwtool getrandom hostapd-common ip6tables iptables iw iwinfo jshn jsonfilter kernel
@@ -87,13 +97,13 @@ installPackages()
 
     ## Remove DNSMasq
 
-  opkg remove dnsmasq
+  ##opkg remove dnsmasq
 
-  opkg install dnsmasq-full
+  ##opkg install dnsmasq-full
 
-  opkg install v2raya
+  ##opkg install v2raya
 
-  opkg install /etc/luci-app-v2raya_6_all.ipk
+  ##opkg install /etc/luci-app-v2raya_6_all.ipk
 
   log_say "PrivateRouter update complete!"
 }
